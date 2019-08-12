@@ -17,6 +17,7 @@ recreate: destroy create
 destroy:
 	@deactivate >/dev/null 2>&1 || true
 	rm -rf ./exspa-venv || true
+	rm -rf ./node_modules || true
 
 check:
 	. ./exspa-venv/bin/activate && python --version
