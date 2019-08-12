@@ -1,0 +1,11 @@
+{
+  "name": "exspa",
+  "version": "1.0.0",
+  "description": "Experimental SPA Package",
+  "main": "index.js",
+  "author": "Matteo Nastasi <nastasi@alternativeoutput.it>",
+  "license": "GPLv3",
+  "dependencies": {
+    "webpack": "^4.39.1"
+  }
+}

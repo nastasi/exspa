@@ -1,1 +1,2 @@
-exspa-venv/
+/exspa-venv/
+/node_modules/
