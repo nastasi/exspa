@@ -27,13 +27,14 @@ echo \"deb https://dl.yarnpkg.com/debian/ stable main\" | sudo tee /etc/apt/sour
 
 yarn_check: timestamps/yarn_check.tstamp
 
-# main targets
+#
+# MAIN TARGETS
+#
+
 create: virtualenv install_dev_reqs node yarn_check
+	. ./$(PROJ)-venv/bin/activate && yarn
 
 recreate: destroy create
-
-env:
-	@echo ". ./$(PROJ)-venv/bin/activate"
 
 destroy:
 	@deactivate >/dev/null 2>&1 || true
@@ -41,7 +42,10 @@ destroy:
 	rm -rf ./node_modules
 	rm -f timestamps/[a-z]*
 
+env:
+	@echo ". ./$(PROJ)-venv/bin/activate"
+
 check:
 	. ./$(PROJ)-venv/bin/activate && python --version
 
-.PHONY: install_reqs destroy virtualenv install_dev_reqs node yarn_check create recreate check
+.PHONY: install_reqs destroy virtualenv install_dev_reqs node yarn_check create recreate end check
