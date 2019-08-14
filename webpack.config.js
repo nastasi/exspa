@@ -2,15 +2,23 @@ const HtmlWebPackPlugin = require("html-webpack-plugin");
 const CopyPlugin = require('copy-webpack-plugin');
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const ManifestPlugin = require('webpack-manifest-plugin');
+// const commonsPlugin = new webpack.optimize.CommonsChunkPlugin(
+//     'commons',  // Just name it
+//     'common.js' // Name of the output file
+//                 // There are more options, but we don't need them yet.
+// );
 
 const path = require('path');
 
 module.exports = {
-  entry: './src/index.js',
+  entry: {
+    index: './src/index.js',
+    second: './src/second.js'
+  },
   mode: 'production',
   output: {
     path: path.resolve(__dirname, 'dist'),
-    filename: 'bundle.js'
+    filename: '[name]-bundle.js'
   },
   resolve: {
     extensions: ['.js', '.jsx']
@@ -43,11 +51,26 @@ module.exports = {
       }
     ]
   },
+
+//  optimization: {
+//    splitChunks: {
+//      // include all types of chunks
+//      chunks: 'all'
+//    }
+//  },
+
   plugins: [
     new HtmlWebPackPlugin({
       template: "./public/index.html",
       filename: "./index.html",
-      favicon: "./public/favicon.ico"
+      favicon: "./public/favicon-index.ico",
+      chunks: ['index']
+    }),
+    new HtmlWebPackPlugin({
+      template: "./public/second.html",
+      filename: "./second.html",
+      favicon: "./public/favicon-second.ico",
+      chunks: ['second']
     }),
     new CopyPlugin([
       {from: "./public/logo192.png", to: "logo192.png"}
