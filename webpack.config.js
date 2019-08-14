@@ -52,12 +52,14 @@ module.exports = {
     ]
   },
 
-//  optimization: {
-//    splitChunks: {
-//      // include all types of chunks
-//      chunks: 'all'
-//    }
-//  },
+//   optimization: {
+//     splitChunks: {
+//         cacheGroups: {
+//             default: false,
+//             vendors: false,
+//         }
+//     }
+//   },
 
   plugins: [
     new HtmlWebPackPlugin({
