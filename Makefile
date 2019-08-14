@@ -45,10 +45,13 @@ destroy:
 env:
 	@echo ". ./$(PROJ)-venv/bin/activate"
 
+build:
+	. ./$(PROJ)-venv/bin/activate && yarn build
+
 start:
 	. ./$(PROJ)-venv/bin/activate && yarn start
 
 check:
 	. ./$(PROJ)-venv/bin/activate && python --version
 
-.PHONY: install_reqs destroy virtualenv install_dev_reqs node yarn_check create recreate env start check
+.PHONY: install_reqs destroy virtualenv install_dev_reqs node yarn_check create recreate env build start check
