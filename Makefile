@@ -36,7 +36,10 @@ create: virtualenv install_dev_reqs node yarn_check
 
 recreate: destroy create
 
-destroy:
+clean:
+	rm -rf ./dist
+
+destroy: clean
 	@deactivate >/dev/null 2>&1 || true
 	rm -rf ./$(PROJ)-venv
 	rm -rf ./node_modules
@@ -54,4 +57,4 @@ start:
 check:
 	. ./$(PROJ)-venv/bin/activate && python --version
 
-.PHONY: install_reqs destroy virtualenv install_dev_reqs node yarn_check create recreate env build start check
+.PHONY: install_reqs clean destroy virtualenv install_dev_reqs node yarn_check create recreate env build start check
