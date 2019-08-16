@@ -2,6 +2,8 @@
 
 PROJ = exspa
 
+ALL: build
+
 timestamps/virtualenv.tstamp:
 	virtualenv -p /usr/bin/python3.5 ./$(PROJ)-venv
 	touch $@
@@ -49,6 +51,7 @@ env:
 	@echo ". ./$(PROJ)-venv/bin/activate"
 
 build:
+	rm -rf ./dist
 	. ./$(PROJ)-venv/bin/activate && yarn build
 
 start:
