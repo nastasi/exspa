@@ -37,7 +37,7 @@ module.exports = {
         loader: [MiniCssExtractPlugin.loader, "css-loader"]
       },
       {
-        test: /\.(png|svg|jpg|jpeg|gif|ico)$/,
+        test: /\.(png|svg|jpg|jpeg|gif|ico|map)$/,
         exclude: /node_modules/,
         use: ['file-loader?name=[name].[ext]'] // ?name=[name].[ext] is only necessary to preserve the original file name
       },
