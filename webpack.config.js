@@ -61,6 +61,36 @@ module.exports = (env, argv) => {
       ]
     },
 
+    optimization: {
+      splitChunks: {
+        cacheGroups: {
+          default: false,
+          vendors: false,
+
+          // vendor chunk
+          vendor: {
+            name: 'vendor',
+            // sync + async chunks
+            chunks: 'all',
+            // import file path containing node_modules
+            test: /node_modules/,
+            // priority
+            priority: 20
+          },
+
+          // common chunk
+          common: {
+            name: 'common',
+            minChunks: 2,
+            chunks: 'initial',
+            priority: 10,
+            reuseExistingChunk: true,
+            enforce: true
+          }
+        }
+      }
+    },
+
     devServer: {
       publicPath: "/",
       contentBase: "./public",
